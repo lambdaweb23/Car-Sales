@@ -1,4 +1,6 @@
 import React from 'react';
+// function to connect the store to the component
+import { connect } from 'react-redux';
 import AdditionalFeature from './AdditionalFeature';
 
 const AdditionalFeatures = props => {
@@ -18,4 +20,12 @@ const AdditionalFeatures = props => {
   );
 };
 
-export default AdditionalFeatures;
+const mapStateToProps = ({ store }) => {
+  return { store };
+}
+
+// connect is where you pass props from store
+export default connect(
+  mapStateToProps,
+  {}
+)(AdditionalFeatures);
