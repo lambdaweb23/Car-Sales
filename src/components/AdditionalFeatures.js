@@ -1,13 +1,15 @@
 import React from 'react';
+// function to connect the store to the component
+import { connect } from 'react-redux';
 import AdditionalFeature from './AdditionalFeature';
 
 const AdditionalFeatures = props => {
   return (
     <div className="content">
       <h4>Additional Features</h4>
-      {props.store.length ? (
+      {props.additionalFeatures.length ? (
         <ol type="1">
-          {props.store.map(item => (
+          {props.additionalFeatures.map(item => (
             <AdditionalFeature key={item.id} feature={item} />
           ))}
         </ol>
@@ -18,4 +20,12 @@ const AdditionalFeatures = props => {
   );
 };
 
-export default AdditionalFeatures;
+const mapStateToProps = ({ additionalFeatures }) => {
+  return { additionalFeatures };
+}
+
+// connect is where you pass props from store
+export default connect(
+  mapStateToProps,
+  {}
+)(AdditionalFeatures);
